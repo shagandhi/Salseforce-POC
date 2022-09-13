@@ -4,7 +4,7 @@
  <listeners>
      
         
-         <listener class-name="Academy.listeners"/>
+         <listener class-name="salesForce.listeners"/>
          <listener class-name="resources.ExtentReporterNG"/>
          
 

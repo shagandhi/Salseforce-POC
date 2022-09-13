@@ -4,32 +4,18 @@
  <listeners>
      
         
-         <listener class-name="Academy.listeners"/>
+         <listener class-name="salesForce.listeners"/>
          <listener class-name="resources.ExtentReporterNG"/>
          
 
  </listeners>
 
-  <test name="Validating User login">
+  <test name="SalesFroce">
     <classes>
-      <class name="Academy.HomePage"/>
+      <class name="salesForce.HomePage"/>
+      <class name="salesForce.CreateAccount"/>
           </classes>
       </test>
-      
-    <test name="Validating title in the Page">
-         <classes>
-      <class name="Academy.validateTitle"/>
-       </classes>
-      </test>
-       <test name="App Testing">
-         <classes>
-      <class name="Academy.AppTest"/>
-       </classes>
-      </test>
-            <test name="Validating navigation Bar">
-         <classes>
-      <class name="Academy.validateNavigationBar"/>
-   </classes>
-      </test>
+     
    <!-- Test -->
 </suite> <!-- Suite -->

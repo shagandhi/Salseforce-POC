@@ -11,14 +11,11 @@ public class LandingPage {
 	
 	public WebDriver driver;
 	
-	By signin=By.cssSelector("a[href*='sign_in']");
-	By title=By.cssSelector(".text-center>h2");
-	By NavBar=By.cssSelector(".nav.navbar-nav.navbar-right>li>a");
-	By popup=By.xpath("//button[text()='NO THANKS']");
-	
-	
-	
-	
+	By appLauncher=By.xpath("//div[@class='slds-icon-waffle']");
+	By searchInput=By.xpath("//input[@placeholder='Search apps and items...']");
+	By options=By.xpath("//one-app-launcher-menu-item //p[@class='slds-truncate']");
+	By accountMenu = By.xpath("//span[@class='slds-truncate'][normalize-space()='Accounts']");
+			////one-app-nav-bar-item-root[6]/a[1]/span[1]");	
 	
 	public LandingPage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
@@ -30,25 +27,21 @@ public class LandingPage {
 
 
 
-	public WebElement getLogin()
+	public WebElement getAppLauncher()
 	{
-		return driver.findElement(signin);
+		return driver.findElement(appLauncher);
 	}
-	public WebElement getNavigationBar()
+	public WebElement getSearchInput()
 	{
-		return driver.findElement(NavBar);
+		return driver.findElement(searchInput);
 	}
-	public int getPopUpSize()
+	public List<WebElement> getOptions()
 	{
-		return driver.findElements(popup).size();
+		return driver.findElements(options);
 	}
-	public WebElement getPopUp()
+	public WebElement getAccountMenu()
 	{
-		return driver.findElement(popup);
-	}
-	public WebElement getTitle()
-	{
-		return driver.findElement(title);
+		return driver.findElement(accountMenu);
 	}
 	
 	
