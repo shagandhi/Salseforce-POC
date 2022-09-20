@@ -17,13 +17,27 @@ public class AccountPage {
 	By accountNameInTable = By.xpath("//tbody/tr/th[1]/span[1]/a");
 
 	By contactsection = By.xpath("//span[@title='Contacts']");
-	By addNewContactButton = By.cssSelector(
-			"div.listWrapper:nth-child(1) article  lst-list-view-manager-header:nth-child(1) > div.slds-page-header div.actionsWrapper div[title*='New']");
+	By addNewContactButton = By.xpath("//ul[contains(@class,'branding-actions')]/li[1]/a");
 	By saluteDDL = By.xpath("//button[@id='combobox-button-548']");
-	By optionList = By.cssSelector("lightning-base-combobox-item span.slds-truncate");
 	By lastName = By.xpath("//input[@name='lastName']");
-	By contactNameInTable = By
-			.xpath("table[data-aura-rendered-by='8439:0'] tbody th[scope*='row'] span:nth-child(1) a");
+	By contactNameInTable = By.cssSelector("table[data-aura-rendered-by] tbody th[scope*='row'] span:nth-child(1) a");
+	
+	By opportunitySection = By.xpath("//span[@title='Opportunities']");
+	By addNewOpportunityButton = By.xpath("//ul[contains(@class,'branding-actions')]/li[1]/a[@title='New']");
+	By opportunityNameInTable = By.cssSelector("table[data-aura-rendered-by] tbody tr th[scope*='row'] span:nth-child(1) a");
+	By opportunityName = By.xpath("//input[@name='Name']");
+	By closeDate = By.xpath("//input[@name='CloseDate']");
+	By stageDDL = By.xpath("//button[@aria-label='Stage, --None--']");
+	By optionProspecting = By.xpath("//span[text()='Prospecting'][@title='Prospecting']");
+	
+	By caseSection = By.xpath("//span[@title='Cases']");
+	By addNewCaseButton = By.xpath("//ul[contains(@class,'branding-actions')]/li[1]/a[@title='New']");
+	By caseNameInTable = By.cssSelector("table[data-aura-rendered-by] tbody tr th[scope*='row'] span:nth-child(1) a");
+	By statusDDL = By.xpath("//button[@aria-label='Status, New']");
+	By caseOriginDDL = By.cssSelector(" div.forcePageBlockSectionRow:nth-child(3) div:nth-child(1) > a.select");
+	By optionWorking = By.xpath("//span[text()='Working'][@title='Working']");
+	By optionPhone = By.xpath("//a[text()='Phone'][@title='Phone']");
+	By saveCaseBtn = By.xpath("//button[@title='Save']");
 
 	public AccountPage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
@@ -56,8 +70,8 @@ public class AccountPage {
 		return driver.findElement(contactsection);
 	}
 
-	public WebElement getAddNewContactButton() {
-		return driver.findElement(addNewContactButton);
+	public List<WebElement> getAddNewContactButton() {
+		return driver.findElements(addNewContactButton);
 	}
 
 	public WebElement getSaluteDDL() {
@@ -68,12 +82,67 @@ public class AccountPage {
 		return driver.findElement(lastName);
 	}
 
-	public List<WebElement> getOptionList() {
-		return driver.findElements(optionList);
+	public WebElement getOptionProspecting() {
+		return driver.findElement(optionProspecting);
 	}
 
 	public List<WebElement> getContactNameInTable() {
 		return driver.findElements(contactNameInTable);
 	}
+	
+	public WebElement getOpportunitySection() {
+		return driver.findElement(opportunitySection);
+	}
 
+	public List<WebElement> getAddNewOpportunityButton() {
+		return driver.findElements(addNewOpportunityButton);
+	}
+	
+	public List<WebElement> getOpportunityNameInTable() {
+		return driver.findElements(opportunityNameInTable);
+	}
+	
+	public WebElement getOpportunityName() {
+		return driver.findElement(opportunityName);
+	}
+	
+	public WebElement getCloseDate() {
+		return driver.findElement(closeDate);
+	}
+	
+	public WebElement getStageDDL() {
+		return driver.findElement(stageDDL);
+	}
+	
+	public WebElement getCaseSection() {
+		return driver.findElement(caseSection);
+	}
+	
+	public List<WebElement> getAddNewCaseButton() {
+		return driver.findElements(addNewCaseButton);
+	}
+	
+	public List<WebElement> getCaseNameInTable() {
+		return driver.findElements(caseNameInTable);
+	}
+	
+	public WebElement getStatusDDL() {
+		return driver.findElement(statusDDL);
+	}
+	
+	public WebElement getCaseOriginDDL() {
+		return driver.findElement(caseOriginDDL);
+	}
+	
+	public WebElement getOptionWorking() {
+		return driver.findElement(optionWorking);
+	}
+	
+	public WebElement getOptionPhone() {
+		return driver.findElement(optionPhone);
+	}
+	
+	public WebElement getSaveCaseBtn() {
+		return driver.findElement(saveCaseBtn);
+	}
 }

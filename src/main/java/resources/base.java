@@ -3,20 +3,28 @@ package resources;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Timeouts;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 
 public class base {
@@ -100,5 +108,45 @@ public class base {
         }
         return data;
     }
+    
+    public static void checkPageIsReady() {
+
+    	  JavascriptExecutor js = (JavascriptExecutor) driver;
+
+    	  // Initially bellow given if condition will check ready state of page.
+    	  if (js.executeScript("return document.readyState").toString().equals("complete")) {
+    	   System.out.println("Page Is loaded.");
+    	   return;
+    	  }
+
+    	  // This loop will iterate for 25 times to check If page Is ready after
+    	  // every 1 second.
+    	  // If the page loaded successfully, it will terminate the for loop
+    	  for (int i = 0; i < 25; i++) {
+    	   try {
+    	    Thread.sleep(5000);
+    	   } catch (InterruptedException e) {
+    	   }
+
+    	   // To check page ready state.
+    	   if (js.executeScript("return document.readyState").toString().equals("complete")) {
+    	    break;
+    	   }
+    	  }
+    	 } 
+    public static boolean isClickable(WebElement webe)      
+    {
+        try
+        {
+            WebDriverWait wait = new WebDriverWait(driver, 5);
+            wait.until(ExpectedConditions.elementToBeClickable(webe));
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+    }
+			
 }
 
