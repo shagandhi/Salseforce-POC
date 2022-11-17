@@ -61,7 +61,6 @@ public class HomePage extends base{
 	public void navigateToSales() throws IOException, InterruptedException
 	{
 		landingPage.getAppLauncher().click();
-		Thread.sleep(3000);
 		landingPage.getSearchInput().sendKeys("Sales");
 		 for (int i =0;i<landingPage.getOptions().size();++i) {
 			 String elementText = landingPage.getOptions().get(i).getText(); 

@@ -1,8 +1,12 @@
 package resources;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -147,6 +151,66 @@ public class base {
             return false;
         }
     }
-			
+    
+    public static boolean switchToWindow(int n)      
+    {
+        try
+        {
+        	 ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        	    driver.switchTo().window(tabs2.get(n));
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+    }
+    
+    public static boolean closeTheWindow(int n)      
+    {
+        try
+        {
+        	 ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        	 driver.switchTo().window(tabs2.get(n));
+        	    driver.close();
+        	    driver.switchTo().window(tabs2.get(0));
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+    }
+    public static void scrollToButtonOfPage() {
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+    	try {
+    	    long lastHeight=((Number)js.executeScript("return document.body.scrollHeight")).longValue();
+    	    while (true) {
+    	        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+    	        Thread.sleep(2000);
+
+    	        long newHeight = ((Number)js.executeScript("return document.body.scrollHeight")).longValue();
+    	        if (newHeight == lastHeight) {
+    	            break;
+    	        }
+    	        lastHeight = newHeight;
+    	    }
+    	} catch (InterruptedException e) {
+    	    e.printStackTrace();
+    	}
+    }
+	
+    public static void scrollToButtonOfPageUsingRobot() {
+    	Robot robot;
+		try {
+			robot = new Robot();
+			robot.keyPress(KeyEvent.VK_PAGE_DOWN);
+			//robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
+		} catch (AWTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+    }
 }
 
